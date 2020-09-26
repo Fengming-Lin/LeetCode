@@ -15,23 +15,33 @@
 """
 
 
-class Solution():
-    def twoSum(nums: list, target: int):
+class Solution(object):
 
-        output = []
-        lg = len(nums)
-        for i in range(0, lg-1):
-            for j in range(i+1, lg):
-                if(nums[i] + nums[j] == target):
-                    output.append(i)
-                    output.append(j)
-                    return output
+    # 两层循环暴力解法
+    def twoSum_1(self, nums, target):
+        res = []
+        for i in range(0, len(nums)-1):
+            for j in range(i+1, len(nums)):
+                if nums[i] + nums[j] == target:
+                    res.append(i)
+                    res.append(j)
+                    return res
+
+    # Hash 字典
+    def twoSum_2(self, nums, target):
+        dict1 = {}
+        for i in range(len(nums)):
+            dict1[nums[i]] = i
+            if dict1.get(target - nums[i]) is not None:
+                return [dict1.get(target - nums[i]), dict1.get(nums[i])]
+
 
 if __name__ == '__main__':
-    nums = [2, 7, 11, 15]
-    target = 9
-    output = Solution.twoSum(nums, target)
+    a = [2, 7, 11, 15]
+    b = 9
+    output = Solution.twoSum_2(Solution, a, b)
     print(output)
+
 
 
 
