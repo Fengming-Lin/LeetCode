@@ -26,6 +26,7 @@ def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         s += (l1.val if l1 else 0) + (l2.val if l2 else 0)
         p.next = ListNode(s % 10)  # p.next 指向新链表, 用来创建一个新的链表
         p = p.next  # p 向后遍历
+
         s //= 10  # 有进位情况则取模, eg. s = 18, 18 // 10 = 1
         l1 = l1.next if l1 else None  # 如果l1存在, 则向后遍历, 否则为 None
         l2 = l2.next if l2 else None  # 如果l2存在, 则向后遍历, 否则为 None
